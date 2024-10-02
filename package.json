@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "English version the 🌲 Cypress, from Zero to the Cloud ☁️ course, from the Talking About Testing online school.",
   "main": "src/index.html",
-"scripts": {
-  "cy:open": "cypress open",
-  "test": "cypress run"
-},
+  "scripts": {
+    "cy:open": "cypress open",
+    "headless test": "cypress run"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wlsf82/cypress-from-zero-to-the-cloud.git"

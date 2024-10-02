@@ -1,25 +1,21 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (formParams = {}, validateNameBeforeClick = false) => {
+    const defaultFormParams = {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'test@fakeemail.com',
+        textArea: 'Amazing work!'
+    }
+
+    const finalFormParams = { ...defaultFormParams, ...formParams }
+
+    cy.get('#firstName').as('firstName').type(finalFormParams.firstName)
+    cy.get('#lastName').as('lastName').type(finalFormParams.lastName)
+    cy.get('#email').type(finalFormParams.email)
+    cy.get('#open-text-area').type(finalFormParams.textArea)
+
+    if (validateNameBeforeClick) {
+        cy.get('@firstName').should('have.value', formParams.firstName)
+        cy.get('@lastName').should('have.value', formParams.lastName)
+    }
+    cy.contains('button', 'Send').should('be.enabled').click()
+})
