@@ -68,9 +68,26 @@ describe('TAT Customer Service Center', () => {
     cy.get('.success').should('be.visible')
   });
 
-  it('description', () => {
-
+  it('selects a product YouTube', () => {
+    cy.get('#product')
+      .select('YouTube')
+      .should('have.value', 'youtube')
+  });
+  it('select by value', () => {
+    cy.get('#product')
+      .select('mentorship')
+      .should('have.value', 'mentorship')
   });
 
+  it('select by index', () => {
+    cy.get('#product')
+      .select(1)
+      .should('have.value', 'blog')
+  });
 
+  it('select by index', () => {
+    cy.get('#product')
+      .select(1)
+      .should('have.value', 'blog')
+  });
 })
