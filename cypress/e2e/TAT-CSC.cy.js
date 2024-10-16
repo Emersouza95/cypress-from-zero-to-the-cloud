@@ -5,7 +5,7 @@ describe("TAT Customer Service Center", () => {
     cy.visit("src/index.html");
   });
 
-  it.only("Ex 01 - fills in the required fields and submits the form", () => {
+  it("Ex 01 - fills in the required fields and submits the form", () => {
     cy.get("#firstName").type("Josh");
     cy.get("#lastName").type("Henkins");
     cy.get("#email").type("tatemail@testing.com");
